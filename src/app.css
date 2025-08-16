@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+/* Custom components for geometric aesthetics */
+.geometric-bg {
+  background-image: 
+    linear-gradient(30deg, transparent 40%, rgba(16, 185, 129, 0.1) 40%, rgba(16, 185, 129, 0.1) 60%, transparent 60%),
+    linear-gradient(150deg, transparent 40%, rgba(16, 185, 129, 0.05) 40%, rgba(16, 185, 129, 0.05) 60%, transparent 60%);
+}
+
+.geometric-element {
+  position: absolute;
+  opacity: 0.3;
+  animation: geometric 10s linear infinite;
+}
+
+.btn-primary {
+  @apply bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 font-medium;
+}
+
+.btn-secondary {
+  @apply border border-emerald-600 text-emerald-400 hover:bg-emerald-600 hover:text-white px-8 py-3 rounded-lg transition-all duration-300 font-medium;
+}
+
+.card {
+  @apply bg-emerald-950/30 border border-emerald-800/30 rounded-lg p-6 hover:border-emerald-600/50 transition-all duration-300;
+}
+
+.text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-200;
+}
+
+/* Custom animations for line-based geometric elements */
+.animate-draw-line {
+  animation: drawLine 2s ease-in-out infinite;
+}
+
+@keyframes drawLine {
+  0% { stroke-dasharray: 0, 100; }
+  100% { stroke-dasharray: 100, 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes geometric {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(0.9); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Base styles */
+body {
+  @apply font-sans bg-black text-white;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+}
