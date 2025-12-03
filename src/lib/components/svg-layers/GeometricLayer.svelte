@@ -18,52 +18,57 @@
      *  </GeometricLayer>
      */
     import { ShapeFactory, type ShapeType } from "./shapes/ShapeFactory";
-    import type { IShape } from "./shapes/ShapeInterface";
+    import type { ConcentricDiameters } from "./shapes/ShapeCalculator";
+    import type { FlatLayerItem } from "./types";
 
     // Props using Svelte 5 runes
-    let {
-        shape = "circle" as ShapeType,
-        primeSize = 25,
-        spacing = 6.25,
-        count = 7,
-        strokeColor = "rgb(16, 185, 129)",
-        strokeWidth = 3,
-        centerFill = false,
-        direction = "outward", // 'outward', 'inward', or 'both'
-        layerIndex = 0,
-        children = undefined,
-    } = $props();
+    let { layer }: { layer: FlatLayerItem } = $props();
 
     // Calculate center position (assuming 100x100 viewBox)
     const center = 50;
 
-    // Create shape instance using $derived
-    const shapeInstance = $derived(
-        ShapeFactory.createShape(
-            shape,
+    // Create calculator and calculate all sizes
+    const calculator = $derived(
+        ShapeFactory.createCalculator(layer.shape, {
+            outer: layer.size,
+            spacing: layer.spacing,
+            count: layer.count,
+            direction: layer.direction,
+        }),
+    );
+
+    const concentricDiameters = $derived(calculator.calculateLayerDiameters());
+
+    // Create renderer and generate SVG content
+    const renderer = $derived(
+        ShapeFactory.createRenderer(layer.shape, {
             center,
-            primeSize,
-            strokeColor,
-            strokeWidth,
-        ),
+            strokeColor: layer.strokeColor,
+            strokeWidth: layer.strokeWidth,
+            rotation: layer.rotation,
+        }),
     );
 
-    // Generate SVG content using $derived
-    const strokesSvg = $derived(
-        shapeInstance.renderShapes(count, spacing, direction),
+    const strokesSvg = $derived(renderer.renderShapes(concentricDiameters));
+    const primeFillSvg = $derived(
+        renderer.renderPrimeFill(concentricDiameters.outer),
     );
-    const primeFillSvg = $derived(shapeInstance.renderPrimeFill());
 
-    // Generate mask for this layer if needed using $derived
-    const layerMaskId = $derived(
-        `layer-mask-${layerIndex}-${Math.random().toString(36).slice(2, 11)}`,
-    );
-    const maskSvg = $derived(shapeInstance.generateMaskSvg());
+    // Use the calculated effective prime size
+    const effectivePrimeSize = $derived(concentricDiameters.outer);
 </script>
 
 <!-- Render as SVG elements only -->
-{@html strokesSvg}
-{#if centerFill}
-    {@html primeFillSvg}
+{#if layer.maskId}
+    <g mask={`url(#${layer.maskId})`}>
+        {@html strokesSvg}
+        {#if layer.centerFill}
+            {@html primeFillSvg}
+        {/if}
+    </g>
+{:else}
+    {@html strokesSvg}
+    {#if layer.centerFill}
+        {@html primeFillSvg}
+    {/if}
 {/if}
-{@render children?.()}

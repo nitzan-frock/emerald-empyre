@@ -8,11 +8,6 @@
     linear-gradient(150deg, transparent 40%, rgba(16, 185, 129, 0.05) 40%, rgba(16, 185, 129, 0.05) 60%, transparent 60%);
 }
 
-.geometric-element {
-  position: absolute;
-  opacity: 0.3;
-  animation: geometric 10s linear infinite;
-}
 
 .btn-primary {
   @apply bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 font-medium;

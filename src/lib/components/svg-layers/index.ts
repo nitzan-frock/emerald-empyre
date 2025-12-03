@@ -1,11 +1,25 @@
-// SVG Layer Components
-export { default as SvgContainer } from './SvgContainer.svelte';
-export { default as GeometricLayer } from './GeometricLayer.svelte';
-export { default as MaskLayer } from './MaskLayer.svelte';
+// Components
+export { default as SvgContainer } from "./SvgContainer.svelte";
+export { default as GeometricLayer } from "./GeometricLayer.svelte";
+export { default as MaskLayer } from "./MaskLayer.svelte";
+export { default as FlatLayerRenderer } from "./FlatLayerRenderer.svelte";
 
-// Shape Classes and Types
-export { ShapeFactory, type ShapeType } from './shapes/ShapeFactory';
-export type { IShape } from './shapes/ShapeInterface';
-export { CircleShape } from './shapes/CircleShape';
-export { SquareShape } from './shapes/SquareShape';
-export { TriangleShape } from './shapes/TriangleShape';
+// Types
+export type {
+    BaseShapeProperties,
+    LayerConfig,
+    LayerRuntimeProperties,
+    FlatLayerItem,
+    CalculateFlatLayersFn
+} from "./types";
+export type {
+    ShapeType,
+    Shape,
+    ShapeCalculator,
+    ShapeRenderer,
+    ConcentricDiameters,
+    ShapeCalculationInput
+} from "./shapes";
+
+// Utilities
+export { calculateFlatLayers } from "./calculateFlatLayers";
