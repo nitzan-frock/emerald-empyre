@@ -16,6 +16,12 @@ export const allEvents: Event[] = [
         location: 'Voodoo Brewing',
         locationUrl: 'https://voodoobrewery.vegas/',
     },
+    {
+        // Use Date constructor with year, month (0-indexed), day to avoid timezone issues
+        date: new Date(2026, 1, 7),
+        location: 'Backstage Bar and Billiards',
+        locationUrl: 'https://www.601fremont.com/',
+    },
     // Add more events here
 ];
 
