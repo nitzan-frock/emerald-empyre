@@ -1,4 +1,4 @@
-- For CSS always use Tailwind CSS.
-- For the frontend always prefer to use svelte framework tools over pure html or JS.
+- For CSS, always use Tailwind CSS.
+- For the frontend, always prefer to use svelte framework tools over pure html or JS.
 - Always use the most up-to-date documentation for any external library/tool.
 - Look for commonalities between similar html pieces and create svelte components for them.

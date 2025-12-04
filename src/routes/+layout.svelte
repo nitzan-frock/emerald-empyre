@@ -1,12 +1,14 @@
 <script>
-  import '../app.css';
-  import favicon from '$lib/assets/favicon.svg';
+    import "../app.css";
 </script>
 
 <svelte:head>
-  <link rel="icon" href={favicon} />
-  <title>Emerald Empyre</title>
-  <meta name="description" content="Geometric soundscapes that evoke depth and infinity" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Emerald Empyre</title>
+    <meta
+        name="description"
+        content="Emerald Empyre is an alternative rock band from Las Vegas, NV"
+    />
 </svelte:head>
 
 <slot />
