@@ -17,7 +17,6 @@
     // Media videos - user can populate this array with YouTube video IDs or URLs
     const mediaVideos: string[] = [
         "https://youtu.be/9g1q2VleLHE?si=dlamZTi4IbyqNgo_",
-        "https://www.youtube.com/watch?v=79-bApI3GIU",
     ];
 
     // Get future events and format them for the table
