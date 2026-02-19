@@ -1,8 +1,10 @@
 <script lang="ts">
+    type CellType = 'text' | 'link' | 'icon-link';
+
     interface TableColumn {
         header: string;
         key: string;
-        cellType?: 'text' | 'link' | 'icon-link';
+        cellType?: CellType;
     }
 
     interface TableRow {
@@ -36,13 +38,14 @@
                     class="border-b border-gray-700/50 hover:bg-emerald-950/20 transition-colors"
                 >
                     {#each columns as column}
+                        {@const cellType = column.cellType ?? 'text'}
                         <td class="py-4 px-4 text-gray-300 text-center">
                             {#if typeof row[column.key] === "object" && row[column.key] !== null}
                                 {@const cellValue = row[column.key] as {
                                     text?: string;
                                     url?: string;
                                 }}
-                                {#if cellValue.url && column.cellType === "icon-link"}
+                                {#if cellValue.url && cellType === "icon-link"}
                                     <a
                                         href={cellValue.url}
                                         target="_blank"
@@ -50,7 +53,7 @@
                                         class="inline-flex items-center justify-center text-emerald-400 hover:text-emerald-300 transition-colors"
                                         aria-label="Get tickets"
                                     >
-                                        <i class="bx bx-purchase-tag text-2xl"></i>
+                                        <i class="bx bx-ticket text-2xl"></i>
                                     </a>
                                 {:else if cellValue.url}
                                     <a
