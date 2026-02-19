@@ -26,11 +26,13 @@
         location: event.locationUrl
             ? { text: event.location, url: event.locationUrl }
             : event.location,
+        tickets: event.ticketUrl ? { url: event.ticketUrl } : undefined,
     }));
 
     const eventTableColumns = [
         { header: "Date", key: "date" },
         { header: "Location", key: "location" },
+        { header: "Tickets", key: "tickets" },
     ];
 </script>
 

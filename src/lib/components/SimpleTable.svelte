@@ -38,10 +38,20 @@
                         <td class="py-4 px-4 text-gray-300 text-center">
                             {#if typeof row[column.key] === "object" && row[column.key] !== null}
                                 {@const cellValue = row[column.key] as {
-                                    text: string;
+                                    text?: string;
                                     url?: string;
                                 }}
-                                {#if cellValue.url}
+                                {#if cellValue.url && column.key === "tickets"}
+                                    <a
+                                        href={cellValue.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center justify-center text-emerald-400 hover:text-emerald-300 transition-colors"
+                                        aria-label="Get tickets"
+                                    >
+                                        <i class="bx bx-purchase-tag text-2xl"></i>
+                                    </a>
+                                {:else if cellValue.url}
                                     <a
                                         href={cellValue.url}
                                         target="_blank"
@@ -51,7 +61,7 @@
                                         {cellValue.text}
                                     </a>
                                 {:else}
-                                    {cellValue.text}
+                                    {cellValue.text || ""}
                                 {/if}
                             {:else}
                                 {row[column.key] || ""}
