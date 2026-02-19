@@ -4,6 +4,12 @@
 
 <svelte:head>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link
+        href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css"
+        rel="stylesheet"
+        integrity="sha384-2gE+nobVhtSGcVwqDAVBBusZT6F4LmSpaV0t1Ik5+pUvNbK/CtYFQki71R+xVQ1Z"
+        crossorigin="anonymous"
+    />
     <title>Emerald Empyre</title>
     <meta
         name="description"

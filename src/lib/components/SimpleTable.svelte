@@ -1,11 +1,16 @@
 <script lang="ts">
+    type CellType = 'text' | 'link' | 'icon-link';
+
     interface TableColumn {
         header: string;
         key: string;
+        cellType?: CellType;
+        iconClass?: string;
+        ariaLabel?: string;
     }
 
     interface TableRow {
-        [key: string]: string | { text: string; url?: string } | undefined;
+        [key: string]: string | { text?: string; url?: string } | undefined;
     }
 
     interface Props {
@@ -35,13 +40,24 @@
                     class="border-b border-gray-700/50 hover:bg-emerald-950/20 transition-colors"
                 >
                     {#each columns as column}
+                        {@const cellType = column.cellType ?? 'text'}
                         <td class="py-4 px-4 text-gray-300 text-center">
                             {#if typeof row[column.key] === "object" && row[column.key] !== null}
                                 {@const cellValue = row[column.key] as {
-                                    text: string;
+                                    text?: string;
                                     url?: string;
                                 }}
-                                {#if cellValue.url}
+                                {#if cellValue.url && cellType === "icon-link"}
+                                    <a
+                                        href={cellValue.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center justify-center text-emerald-400 hover:text-emerald-300 transition-colors"
+                                        aria-label={column.ariaLabel ?? column.header}
+                                    >
+                                        <i class={column.iconClass ?? "bx bx-link text-2xl"}></i>
+                                    </a>
+                                {:else if cellValue.url}
                                     <a
                                         href={cellValue.url}
                                         target="_blank"
@@ -51,7 +67,7 @@
                                         {cellValue.text}
                                     </a>
                                 {:else}
-                                    {cellValue.text}
+                                    {cellValue.text || ""}
                                 {/if}
                             {:else}
                                 {row[column.key] || ""}

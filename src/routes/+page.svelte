@@ -26,11 +26,19 @@
         location: event.locationUrl
             ? { text: event.location, url: event.locationUrl }
             : event.location,
+        tickets: event.ticketUrl ? { url: event.ticketUrl } : undefined,
     }));
 
     const eventTableColumns = [
         { header: "Date", key: "date" },
         { header: "Location", key: "location" },
+        { 
+            header: "Tickets", 
+            key: "tickets", 
+            cellType: "icon-link" as const,
+            iconClass: "bx bx-ticket text-2xl",
+            ariaLabel: "Get tickets"
+        },
     ];
 </script>
 

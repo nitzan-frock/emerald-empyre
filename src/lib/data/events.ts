@@ -21,7 +21,7 @@ export const allEvents: Event[] = [
         // Use Date constructor with year, month (0-indexed), day to avoid timezone issues
         date: new Date(2026, 1, 20),
         location: 'THE USUAL PLACE',
-        ticketurl: 'https://www.eventbrite.com/e/chalmer-pull-up-reality-algorerhythm-and-emerald-empyre-at-tup-tickets-1982207361578?aff=EmeraldEmpyre',
+        ticketUrl: 'https://www.eventbrite.com/e/chalmer-pull-up-reality-algorerhythm-and-emerald-empyre-at-tup-tickets-1982207361578?aff=EmeraldEmpyre',
         locationUrl: 'https://www.theusualplace.vegas/',
     },
     {
