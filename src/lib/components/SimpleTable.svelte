@@ -2,10 +2,11 @@
     interface TableColumn {
         header: string;
         key: string;
+        cellType?: 'text' | 'link' | 'icon-link';
     }
 
     interface TableRow {
-        [key: string]: string | { text: string; url?: string } | undefined;
+        [key: string]: string | { text?: string; url?: string } | undefined;
     }
 
     interface Props {
@@ -41,7 +42,7 @@
                                     text?: string;
                                     url?: string;
                                 }}
-                                {#if cellValue.url && column.key === "tickets"}
+                                {#if cellValue.url && column.cellType === "icon-link"}
                                     <a
                                         href={cellValue.url}
                                         target="_blank"

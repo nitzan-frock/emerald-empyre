@@ -32,7 +32,7 @@
     const eventTableColumns = [
         { header: "Date", key: "date" },
         { header: "Location", key: "location" },
-        { header: "Tickets", key: "tickets" },
+        { header: "Tickets", key: "tickets", cellType: "icon-link" as const },
     ];
 </script>
 
