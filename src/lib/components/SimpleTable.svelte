@@ -5,6 +5,8 @@
         header: string;
         key: string;
         cellType?: CellType;
+        iconClass?: string;
+        ariaLabel?: string;
     }
 
     interface TableRow {
@@ -51,9 +53,9 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         class="inline-flex items-center justify-center text-emerald-400 hover:text-emerald-300 transition-colors"
-                                        aria-label="Get tickets"
+                                        aria-label={column.ariaLabel ?? column.header}
                                     >
-                                        <i class="bx bx-ticket text-2xl"></i>
+                                        <i class={column.iconClass ?? "bx bx-link text-2xl"}></i>
                                     </a>
                                 {:else if cellValue.url}
                                     <a
