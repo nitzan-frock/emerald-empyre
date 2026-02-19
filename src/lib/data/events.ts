@@ -6,6 +6,7 @@
 export interface Event {
     date: Date;
     location: string;
+    ticketUrl?: string;
     locationUrl?: string;
 }
 
@@ -18,9 +19,16 @@ export const allEvents: Event[] = [
     },
     {
         // Use Date constructor with year, month (0-indexed), day to avoid timezone issues
-        date: new Date(2026, 1, 7),
-        location: 'Backstage Bar and Billiards',
-        locationUrl: 'https://www.601fremont.com/',
+        date: new Date(2026, 1, 20),
+        location: 'THE USUAL PLACE',
+        ticketurl: 'https://www.eventbrite.com/e/chalmer-pull-up-reality-algorerhythm-and-emerald-empyre-at-tup-tickets-1982207361578?aff=EmeraldEmpyre',
+        locationUrl: 'https://www.theusualplace.vegas/',
+    },
+    {
+        // Use Date constructor with year, month (0-indexed), day to avoid timezone issues
+        date: new Date(2026, 1, 27),
+        location: 'Griffin',
+        locationUrl: 'https://the-gr.weeblyte.com/',
     },
     // Add more events here
 ];
