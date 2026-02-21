@@ -57,9 +57,7 @@
                 <p class="text-gray-300 text-lg leading-relaxed text-center">
                     Emerald Empyre, hailing from Las Vegas, NV, is an
                     alternative rock band bringing raw energy and power to their
-                    music and shows. Born from the neon-lit streets of Sin City,
-                    they channel the electric pulse of the desert into their
-                    sound to create soundscapes that evoke depth and infinity.
+                    music and shows.
                 </p>
             </div>
         </Section>
